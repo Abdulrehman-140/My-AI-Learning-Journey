@@ -21,5 +21,5 @@ print(Df.sort_values('Age',ascending=False))
 print(Df.isnull().sum)
 
 #L2 norm of [6,8] is 10
-# 9x^2
-#It means strong negative relationship
+# Differential(Derivative) of 3x^3+4 is 9x^2
+#If the relation is -0.78 It means strong negative relationship
