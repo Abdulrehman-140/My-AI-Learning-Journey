@@ -3,4 +3,5 @@ Today I did:
 2. Numerical Gradient
 3. MSE loss
 4. ReLU function
-5.  
+5. Observed matrix operations before and after normalization
+Corrected.py is the file with clean code and my_work.py is my practice code
