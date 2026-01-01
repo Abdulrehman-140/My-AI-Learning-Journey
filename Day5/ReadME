@@ -1,1 +1,1 @@
-It's my 5th day on track. So Today, I tried metrics (MSE, R2_score) and train_test_split() function.
+It's my 5th day on track. So Today, I tried Linear Regression model with metrics (MSE, R2_score) and train_test_split() function on data data 
