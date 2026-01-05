@@ -1,0 +1,473 @@
+1. NumPy & Pandas Operations
+NumPy: Library for numerical computing. It gives you arrays (vectors, matrices) and fast math operations (element-wise, broadcasting, linear algebra).
+
+Why: ML deals with lots of numbers. NumPy makes operations fast and vectorized (no slow Python loops).
+
+Pandas: Built on NumPy, adds DataFrames (tables with rows/columns, labeled indexes).
+
+Why: Real-world data is messy, tabular, and needs cleaning, grouping, filtering — Pandas does that.
+
+2. Softmax
+Formula:
+
+σ
+(
+z
+)
+i
+=
+e
+z
+i
+∑
+j
+=
+1
+K
+e
+z
+j
+σ(z) 
+i
+​
+ = 
+∑ 
+j=1
+K
+​
+ e 
+z 
+j
+​
+ 
+ 
+e 
+z 
+i
+​
+ 
+ 
+​
+ 
+Turns raw scores (logits) into probabilities summing to 1.
+
+Why: Used in multi-class classification (like neural network outputs for classes).
+
+3. Normalization (Standardization, Min-Max Scaling)
+Standardization: 
+z
+=
+x
+−
+μ
+σ
+z= 
+σ
+x−μ
+​
+  → mean=0, std=1.
+
+Min-Max: 
+x
+′
+=
+x
+−
+min
+⁡
+(
+x
+)
+max
+⁡
+(
+x
+)
+−
+min
+⁡
+(
+x
+)
+x 
+′
+ = 
+max(x)−min(x)
+x−min(x)
+​
+  → range [0, 1].
+
+Why: Features on different scales can mess up gradient descent; normalization speeds training and improves performance.
+
+4. Linear Algebra Basics
+Vectors: 1D arrays. Magnitude & direction.
+
+Dot product: 
+a
+⋅
+b
+=
+∑
+a
+i
+b
+i
+a⋅b=∑a 
+i
+​
+ b 
+i
+​
+  → similarity measure.
+
+Cross product (less used in ML except 3D geometry).
+
+Matrix multiplication: Key for transforming data in layers of neural networks.
+
+Y
+=
+X
+W
++
+b
+Y=XW+b
+where 
+X
+X is data, 
+W
+W weights, 
+b
+b bias.
+
+5. Numerical Gradient
+Approximating derivative using finite differences:
+
+f
+′
+(
+x
+)
+≈
+f
+(
+x
++
+h
+)
+−
+f
+(
+x
+−
+h
+)
+2
+h
+f 
+′
+ (x)≈ 
+2h
+f(x+h)−f(x−h)
+​
+ 
+Why: Check if your analytic gradient (from calculus) is correct (gradient checking).
+
+6. Gradient Descent
+Algorithm to minimize loss function by updating parameters:
+
+w
+:
+=
+w
+−
+η
+⋅
+∂
+L
+∂
+w
+w:=w−η⋅ 
+∂w
+∂L
+​
+ 
+where 
+η
+η is learning rate.
+
+Why: Core optimization method in ML to train models.
+
+7. ReLU (Rectified Linear Unit)
+ReLU
+(
+x
+)
+=
+max
+⁡
+(
+0
+,
+x
+)
+ReLU(x)=max(0,x)
+
+Why: Non-linear activation function in neural networks; solves vanishing gradient problem for positive inputs.
+
+8. MSE Loss (Mean Squared Error)
+For regression:
+
+MSE
+=
+1
+n
+∑
+i
+=
+1
+n
+(
+y
+i
+−
+y
+^
+i
+)
+2
+MSE= 
+n
+1
+​
+  
+i=1
+∑
+n
+​
+ (y 
+i
+​
+ − 
+y
+^
+​
+  
+i
+​
+ ) 
+2
+ 
+Why: Measures average squared difference between actual and predicted values. Differentiable, penalizes large errors.
+
+9. Loss Function (General)
+Function that quantifies how well model predictions match true labels. Want to minimize it.
+
+Examples: MSE (regression), Cross-entropy (classification).
+
+10. Binning
+Converting continuous data into discrete bins (like age groups: 0–18, 19–35, …).
+
+Why: Handle non-linear relationships, reduce noise, or prepare for certain models.
+
+11. Outliers
+Data points far from the rest of the distribution.
+
+Detect using IQR, Z-score.
+
+Why: Outliers can skew model training (especially in regression).
+
+12. Correlations (Pearson)
+Measures linear relationship between two variables (-1 to 1).
+
+Why: Feature selection — highly correlated features may be redundant.
+
+13. Linear Regression
+Model: 
+y
+=
+w
+x
++
+b
+y=wx+b (simple), 
+y
+=
+X
+w
++
+b
+y=Xw+b (multiple).
+
+Finds best-fit line minimizing MSE.
+
+Why: Predict continuous values; foundation for understanding parametric models.
+
+14. Predicting Values
+Using trained model 
+y
+^
+=
+X
+new
+w
+y
+^
+​
+ =X 
+new
+​
+ w for new inputs.
+
+15. 
+R
+2
+R 
+2
+  Score (Coefficient of Determination)
+Measures proportion of variance in dependent variable predictable from independent variables.
+
+Range: (-∞, 1]. 1 = perfect fit.
+
+Why: Evaluates regression model performance.
+
+16. Train/Test Split
+Splitting data into training set (to train model) and test set (to evaluate unseen performance).
+
+Why: Prevent overfitting; estimate how model generalizes.
+
+17. Visualization: Actual vs Predicted
+Use matplotlib.pyplot scatter plot: x = actual, y = predicted.
+
+Perfect predictions lie on line y=x.
+
+Why: Visually assess regression model fit.
+
+18. Logistic Regression
+Despite "regression" in name, it's for binary classification.
+
+Applies sigmoid to linear combination of features → outputs probability (0 to 1).
+
+Model:
+
+P
+(
+y
+=
+1
+∣
+x
+)
+=
+σ
+(
+w
+T
+x
++
+b
+)
+P(y=1∣x)=σ(w 
+T
+ x+b)
+Why: Classify with probability interpretation.
+
+19. Sigmoid
+σ
+(
+z
+)
+=
+1
+1
++
+e
+−
+z
+σ(z)= 
+1+e 
+−z
+ 
+1
+​
+ 
+
+Why: Squashes any real number to (0,1), interpreting as probability.
+
+20. Accuracy
+Correct predictions
+Total predictions
+Total predictions
+Correct predictions
+​
+ 
+
+Why: Simple classification metric, but misleading for imbalanced classes.
+
+21. Confusion Matrix
+Table of TP, TN, FP, FN.
+
+Why: Breaks down classification errors, foundation for precision/recall.
+
+22. Precision, Recall, F1-Score
+Precision: 
+T
+P
+T
+P
++
+F
+P
+TP+FP
+TP
+​
+  → How many selected items are relevant?
+
+Recall: 
+T
+P
+T
+P
++
+F
+N
+TP+FN
+TP
+​
+  → How many relevant items are selected?
+
+F1-score: Harmonic mean of precision & recall:
+
+F
+1
+=
+2
+⋅
+Precision
+⋅
+Recall
+Precision
++
+Recall
+F1=2⋅ 
+Precision+Recall
+Precision⋅Recall
+​
+ 
+Why: Better metrics than accuracy for imbalanced data. F1 balances precision & recall.
+
+You covered a HUGE chunk of ML fundamentals in 7 days.
+This is essentially the core of a first course in ML — from data handling (Pandas/NumPy), through basic models (linear/logistic regression), evaluation, visualization, and optimization (gradient descent).
+
+Next logical steps:
+
+Regularization (L1/Lasso, L2/Ridge) — prevent overfitting.
+
+Multiclass classification extension (softmax regression).
+
+Basic neural networks with hidden layers.
+
+Decision Trees & Random Forests (non-linear models).
+
+Cross-validation for better validation.
+
+If you coded each one and saw results, you're on a killer path. Keep building projects — that’s where it all locks in.
