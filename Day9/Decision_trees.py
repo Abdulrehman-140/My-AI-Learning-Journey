@@ -23,5 +23,5 @@ print("Train Accuracy:", accuracy_score(y_train, model.predict(X_train)))
 print("Test Accuracy:", accuracy_score(y_test, model.predict(X_test)))
 
 
-#Challenge 1: The data is too clean to demonstrate overfitting and underfitting. Train and Test accuracy both are 1.0
-#Challenge 2: No difference after making this. and bro, You can't just give Decision trees and expect me to have a dream to understand it. And no proper challenges either
+#Challenge 1: The data is too clean to demonstrate overfitting and underfitting before adding noise. Train and Test accuracy both are 1.0
+#After adding noise, Things become complicated
